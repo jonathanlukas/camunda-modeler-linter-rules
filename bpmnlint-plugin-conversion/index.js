@@ -2,7 +2,8 @@ module.exports = {
   configs: {
     recommended: {
       rules: {
-        'no-manual-task': 'error'
+        'conversion-warning': 'warn',
+        'conversion-error': 'error'
       }
     }
   }

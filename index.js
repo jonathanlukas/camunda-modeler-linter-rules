@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-  name: 'Linter - Custom Rules',
+  name: 'Conversion Rules',
   script: './dist/client.js'
 };
