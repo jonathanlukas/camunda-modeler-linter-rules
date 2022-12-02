@@ -1,16 +1,39 @@
 const { is } = require("bpmnlint-utils");
 
-/**
- * Rule that reports manual tasks being used.
- */
 module.exports = function () {
+  function findAndReportMessage(nodeToSearch, nodeToReportOn, reporter) {
+    if (
+      nodeToSearch.extensionElements &&
+      nodeToSearch.extensionElements.values
+    ) {
+      nodeToSearch.extensionElements.values
+        .filter((value) => value.$type === "conversion:message")
+        .filter((value) => value.severity === "TASK")
+        .forEach((value) => {
+          console.log("Reporting TASK:", nodeToReportOn.id, value.$body);
+          reporter.report(nodeToReportOn.id, value.$body);
+        });
+    }
+  }
+
   function check(node, reporter) {
-    if (node.extensionElements && node.extensionElements.values) {
-      node.extensionElements.values.filter((value) => value.$type === 'conversion:message').filter((value) => value.severity === 'TASK').forEach((value) => {
-        console.log(value);
-        reporter.report(node.id,value.$body);
+    if (node.eventDefinitions) {
+      node.eventDefinitions.forEach((eventDefinition) => {
+        if (eventDefinition.messageRef) {
+          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+        }
+        if (eventDefinition.signalRef) {
+          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+        }
+        if (eventDefinition.escalationRef) {
+          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+        }
+        if (eventDefinition.errorRef) {
+          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+        }
       });
     }
+    findAndReportMessage(node, node, reporter);
   }
 
   return {
