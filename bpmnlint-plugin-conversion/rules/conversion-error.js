@@ -33,13 +33,13 @@ module.exports = function () {
           findAndReportMessage(eventDefinition.messageRef, node, reporter);
         }
         if (eventDefinition.signalRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.signalRef, node, reporter);
         }
         if (eventDefinition.escalationRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.escalationRef, node, reporter);
         }
         if (eventDefinition.errorRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.errorRef, node, reporter);
         }
       });
     }
