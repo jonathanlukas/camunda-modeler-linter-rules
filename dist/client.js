@@ -266,9 +266,7 @@ cache['bpmnlint-plugin-conversion/conversion-error'] = bpmnlint_plugin_conversio
   !*** ./bpmnlint-plugin-conversion/rules/conversion-error.js ***!
   \**************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-const { is } = __webpack_require__(/*! bpmnlint-utils */ "./node_modules/bpmnlint-utils/dist/index.esm.js");
+/***/ (function(module, exports) {
 
 module.exports = function () {
   function findAndReportMessage(nodeToSearch, nodeToReportOn, reporter) {
@@ -281,7 +279,9 @@ module.exports = function () {
         .filter((value) => value.severity === "WARNING")
         .forEach((value) => {
           console.log("Reporting WARNING:", nodeToReportOn.id, value.$body);
-          reporter.report(nodeToReportOn.id, value.$body);
+          if (nodeToReportOn.id) {
+            reporter.report(nodeToReportOn.id, value.$body);
+          }
         });
     }
   }
@@ -331,9 +331,7 @@ module.exports = function () {
   !*** ./bpmnlint-plugin-conversion/rules/conversion-warning.js ***!
   \****************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-const { is } = __webpack_require__(/*! bpmnlint-utils */ "./node_modules/bpmnlint-utils/dist/index.esm.js");
+/***/ (function(module, exports) {
 
 module.exports = function () {
   function findAndReportMessage(nodeToSearch, nodeToReportOn, reporter) {
@@ -346,29 +344,43 @@ module.exports = function () {
         .filter((value) => value.severity === "TASK")
         .forEach((value) => {
           console.log("Reporting TASK:", nodeToReportOn.id, value.$body);
-          reporter.report(nodeToReportOn.id, value.$body);
+          if (nodeToReportOn.id) {
+            reporter.report(nodeToReportOn.id, value.$body);
+          }
         });
     }
   }
 
+  function isEvent(node) {
+    return [
+      "bpmn:Error",
+      "bpmn:Escalation",
+      "bpmn:Message",
+      "bpmn:Signal",
+    ].includes(node.$type);
+  }
+
   function check(node, reporter) {
+    console.log(node);
     if (node.eventDefinitions) {
       node.eventDefinitions.forEach((eventDefinition) => {
         if (eventDefinition.messageRef) {
           findAndReportMessage(eventDefinition.messageRef, node, reporter);
         }
         if (eventDefinition.signalRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.signalRef, node, reporter);
         }
         if (eventDefinition.escalationRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.escalationRef, node, reporter);
         }
         if (eventDefinition.errorRef) {
-          findAndReportMessage(eventDefinition.messageRef, node, reporter);
+          findAndReportMessage(eventDefinition.errorRef, node, reporter);
         }
       });
     }
-    findAndReportMessage(node, node, reporter);
+    if (!isEvent(node)) {
+      findAndReportMessage(node, node, reporter);
+    }
   }
 
   return {

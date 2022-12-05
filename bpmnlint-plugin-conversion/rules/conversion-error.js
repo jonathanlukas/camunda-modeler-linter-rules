@@ -1,5 +1,3 @@
-const { is } = require("bpmnlint-utils");
-
 module.exports = function () {
   function findAndReportMessage(nodeToSearch, nodeToReportOn, reporter) {
     if (
@@ -11,7 +9,9 @@ module.exports = function () {
         .filter((value) => value.severity === "WARNING")
         .forEach((value) => {
           console.log("Reporting WARNING:", nodeToReportOn.id, value.$body);
-          reporter.report(nodeToReportOn.id, value.$body);
+          if (nodeToReportOn.id) {
+            reporter.report(nodeToReportOn.id, value.$body);
+          }
         });
     }
   }
