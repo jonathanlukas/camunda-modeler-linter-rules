@@ -286,7 +286,17 @@ module.exports = function () {
     }
   }
 
+  function isEvent(node) {
+    return [
+      "bpmn:Error",
+      "bpmn:Escalation",
+      "bpmn:Message",
+      "bpmn:Signal",
+    ].includes(node.$type);
+  }
+
   function check(node, reporter) {
+    console.log(node);
     if (node.eventDefinitions) {
       node.eventDefinitions.forEach((eventDefinition) => {
         if (eventDefinition.messageRef) {
@@ -303,7 +313,9 @@ module.exports = function () {
         }
       });
     }
-    findAndReportMessage(node,node,reporter);
+    if (!isEvent(node)) {
+      findAndReportMessage(node, node, reporter);
+    }
   }
 
   return {
@@ -333,6 +345,7 @@ module.exports = function () {
         .filter((value) => value.$type === "conversion:message")
         .filter((value) => value.severity === "TASK")
         .forEach((value) => {
+          console.log("Reporting TASK:", nodeToReportOn.id, value.$body);
           reporter.report(nodeToReportOn.id, value.$body);
         });
     }
@@ -355,7 +368,7 @@ module.exports = function () {
         }
       });
     }
-    findAndReportMessage(node,node,reporter);
+    findAndReportMessage(node, node, reporter);
   }
 
   return {
