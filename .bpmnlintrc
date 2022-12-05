@@ -1,3 +1,3 @@
 {
-  "extends": ["bpmnlint:recommended","plugin:conversion/recommended"]
+  "extends": ["plugin:conversion/recommended"]
 }
