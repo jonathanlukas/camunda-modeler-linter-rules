@@ -1,7 +1,7 @@
 import { checkProvider } from "./util";
 
 export default function () {
-  const check = checkProvider("WARNING");
+  const check = checkProvider("TASK");
   return {
     check,
   };
