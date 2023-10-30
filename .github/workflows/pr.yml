@@ -1,0 +1,27 @@
+name: Build with Webpack
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+      name: Checkout
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Setup Node JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Build
+      run: |
+        npm install
+        npm run all
+    - name: Commit formatted code
+      uses: stefanzweifel/git-auto-commit-action@v4
