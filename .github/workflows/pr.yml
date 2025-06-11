@@ -24,4 +24,4 @@ jobs:
         npm install
         npm run all
     - name: Commit formatted code
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@v6
