@@ -2,11 +2,11 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./.bpmnlintrc":
+/***/ "./.bpmnlintrc"
 /*!*********************!*\
   !*** ./.bpmnlintrc ***!
   \*********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -84,13 +84,13 @@ cache['bpmnlint-plugin-conversion/conversion-task'] = bpmnlint_plugin_conversion
 
 cache['bpmnlint-plugin-conversion/conversion-info'] = bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__["default"];
 
-/***/ }),
+/***/ },
 
-/***/ "./bpmnlint-plugin-conversion/rules/conversion-info.js":
+/***/ "./bpmnlint-plugin-conversion/rules/conversion-info.js"
 /*!*************************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/conversion-info.js ***!
   \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -107,13 +107,13 @@ __webpack_require__.r(__webpack_exports__);
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./bpmnlint-plugin-conversion/rules/conversion-review.js":
+/***/ "./bpmnlint-plugin-conversion/rules/conversion-review.js"
 /*!***************************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/conversion-review.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -130,13 +130,13 @@ __webpack_require__.r(__webpack_exports__);
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./bpmnlint-plugin-conversion/rules/conversion-task.js":
+/***/ "./bpmnlint-plugin-conversion/rules/conversion-task.js"
 /*!*************************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/conversion-task.js ***!
   \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -153,13 +153,13 @@ __webpack_require__.r(__webpack_exports__);
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./bpmnlint-plugin-conversion/rules/conversion-warning.js":
+/***/ "./bpmnlint-plugin-conversion/rules/conversion-warning.js"
 /*!****************************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/conversion-warning.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -176,13 +176,13 @@ __webpack_require__.r(__webpack_exports__);
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./bpmnlint-plugin-conversion/rules/util.js":
+/***/ "./bpmnlint-plugin-conversion/rules/util.js"
 /*!**************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/util.js ***!
   \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -261,13 +261,13 @@ function checkProvider(severity) {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./node_modules/camunda-modeler-plugin-helpers/index.js":
+/***/ "./node_modules/camunda-modeler-plugin-helpers/index.js"
 /*!**************************************************************!*\
   !*** ./node_modules/camunda-modeler-plugin-helpers/index.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -643,7 +643,7 @@ function getPluginsDirectory() {
   return window.getPluginsDirectory();
 }
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -656,6 +656,12 @@ function getPluginsDirectory() {
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
