@@ -2,90 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./.bpmnlintrc"
-/*!*********************!*\
-  !*** ./.bpmnlintrc ***!
-  \*********************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   config: () => (/* binding */ config),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   resolver: () => (/* binding */ resolver)
-/* harmony export */ });
-/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-warning */ "./bpmnlint-plugin-conversion/rules/conversion-warning.js");
-/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-review */ "./bpmnlint-plugin-conversion/rules/conversion-review.js");
-/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-task */ "./bpmnlint-plugin-conversion/rules/conversion-task.js");
-/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-info */ "./bpmnlint-plugin-conversion/rules/conversion-info.js");
-
-const cache = {};
-
-/**
- * A resolver that caches rules and configuration as part of the bundle,
- * making them accessible in the browser.
- *
- * @param {Object} cache
- */
-function Resolver() {}
-
-Resolver.prototype.resolveRule = function(pkg, ruleName) {
-
-  const rule = cache[pkg + '/' + ruleName];
-
-  if (!rule) {
-    throw new Error('cannot resolve rule <' + pkg + '/' + ruleName + '>: not bundled');
-  }
-
-  return rule;
-};
-
-Resolver.prototype.resolveConfig = function(pkg, configName) {
-  throw new Error(
-    'cannot resolve config <' + configName + '> in <' + pkg +'>: not bundled'
-  );
-};
-
-const resolver = new Resolver();
-
-const rules = {
-  "conversion/conversion-warning": "error",
-  "conversion/conversion-review": "info",
-  "conversion/conversion-task": "warn",
-  "conversion/conversion-info": "info"
-};
-
-const config = {
-  rules: rules
-};
-
-const bundle = {
-  resolver: resolver,
-  config: config
-};
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (bundle);
-
-
-
-cache['bpmnlint-plugin-conversion/conversion-warning'] = bpmnlint_plugin_conversion_rules_conversion_warning__WEBPACK_IMPORTED_MODULE_0__["default"];
-
-
-
-cache['bpmnlint-plugin-conversion/conversion-review'] = bpmnlint_plugin_conversion_rules_conversion_review__WEBPACK_IMPORTED_MODULE_1__["default"];
-
-
-
-cache['bpmnlint-plugin-conversion/conversion-task'] = bpmnlint_plugin_conversion_rules_conversion_task__WEBPACK_IMPORTED_MODULE_2__["default"];
-
-
-
-cache['bpmnlint-plugin-conversion/conversion-info'] = bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__["default"];
-
-/***/ },
-
 /***/ "./bpmnlint-plugin-conversion/rules/conversion-info.js"
 /*!*************************************************************!*\
   !*** ./bpmnlint-plugin-conversion/rules/conversion-info.js ***!
@@ -260,6 +176,90 @@ function checkProvider(severity) {
   };
 }
 
+
+/***/ },
+
+/***/ "./.bpmnlintrc"
+/*!*********************!*\
+  !*** ./.bpmnlintrc ***!
+  \*********************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   config: () => (/* binding */ config),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   resolver: () => (/* binding */ resolver)
+/* harmony export */ });
+/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-warning */ "./bpmnlint-plugin-conversion/rules/conversion-warning.js");
+/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_review__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-review */ "./bpmnlint-plugin-conversion/rules/conversion-review.js");
+/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-task */ "./bpmnlint-plugin-conversion/rules/conversion-task.js");
+/* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-info */ "./bpmnlint-plugin-conversion/rules/conversion-info.js");
+
+const cache = {};
+
+/**
+ * A resolver that caches rules and configuration as part of the bundle,
+ * making them accessible in the browser.
+ *
+ * @param {Object} cache
+ */
+function Resolver() {}
+
+Resolver.prototype.resolveRule = function(pkg, ruleName) {
+
+  const rule = cache[pkg + '/' + ruleName];
+
+  if (!rule) {
+    throw new Error('cannot resolve rule <' + pkg + '/' + ruleName + '>: not bundled');
+  }
+
+  return rule;
+};
+
+Resolver.prototype.resolveConfig = function(pkg, configName) {
+  throw new Error(
+    'cannot resolve config <' + configName + '> in <' + pkg +'>: not bundled'
+  );
+};
+
+const resolver = new Resolver();
+
+const rules = {
+  "conversion/conversion-warning": "error",
+  "conversion/conversion-review": "info",
+  "conversion/conversion-task": "warn",
+  "conversion/conversion-info": "info"
+};
+
+const config = {
+  rules: rules
+};
+
+const bundle = {
+  resolver: resolver,
+  config: config
+};
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (bundle);
+
+
+
+cache['bpmnlint-plugin-conversion/conversion-warning'] = bpmnlint_plugin_conversion_rules_conversion_warning__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+
+
+cache['bpmnlint-plugin-conversion/conversion-review'] = bpmnlint_plugin_conversion_rules_conversion_review__WEBPACK_IMPORTED_MODULE_1__["default"];
+
+
+
+cache['bpmnlint-plugin-conversion/conversion-task'] = bpmnlint_plugin_conversion_rules_conversion_task__WEBPACK_IMPORTED_MODULE_2__["default"];
+
+
+
+cache['bpmnlint-plugin-conversion/conversion-info'] = bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__["default"];
 
 /***/ },
 
