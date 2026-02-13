@@ -189,6 +189,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   config: () => (/* binding */ config),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   moddleExtensions: () => (/* binding */ moddleExtensions),
 /* harmony export */   resolver: () => (/* binding */ resolver)
 /* harmony export */ });
 /* harmony import */ var bpmnlint_plugin_conversion_rules_conversion_warning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bpmnlint-plugin-conversion/rules/conversion-warning */ "./bpmnlint-plugin-conversion/rules/conversion-warning.js");
@@ -236,9 +237,12 @@ const config = {
   rules: rules
 };
 
+const moddleExtensions = {};
+
 const bundle = {
   resolver: resolver,
-  config: config
+  config: config,
+  moddleExtensions: moddleExtensions
 };
 
 
@@ -260,6 +264,7 @@ cache['bpmnlint-plugin-conversion/conversion-task'] = bpmnlint_plugin_conversion
 
 
 cache['bpmnlint-plugin-conversion/conversion-info'] = bpmnlint_plugin_conversion_rules_conversion_info__WEBPACK_IMPORTED_MODULE_3__["default"];
+
 
 /***/ },
 
